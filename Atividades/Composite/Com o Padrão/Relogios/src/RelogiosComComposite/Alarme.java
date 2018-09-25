@@ -1,28 +1,27 @@
 package RelogiosComComposite;
 
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Alarme extends Thread
+public class Alarme extends Thread implements Relogio
 {
 	private static final int INTERVALO = 100;
 	private int hora;
 	private int minuto;
 	private boolean primeiraVez = true;
-	private Relogio[] relogios;
+        private List<Relogio> filhosRelogios = new ArrayList<>();
         
-	
         @Override
         public void run() {
             while (true) {
                 if (this.primeiraVez) {
-                    System.out.println("Ajustando relógios pela primeira vez!");
                     this.ajustaRelogios();
                     this.primeiraVez = false;
                 }
                 else if (this.hora != getHoraAtual() || this.minuto != getMinutoAtual()) {
-                    System.out.println("Alteração no horário!");
                     ajustaRelogios();
                 }
                 esperarIntervalo();
@@ -40,13 +39,10 @@ public class Alarme extends Thread
         private void ajustaRelogios() {
             this.hora = this.getHoraAtual();
             this.minuto = this.getMinutoAtual();
-            this.disparaHoraMudou(hora);
-            this.disparaMinutoMudou(minuto);
+            this.horaMudou(hora);
+            this.minutoMudou(minuto);
         }
         
-	public Alarme(Relogio[] relogios)
-	{	this.relogios = relogios;
-	}
 	
 	private int getHoraAtual()
 	{	//pega o momento atual
@@ -62,15 +58,25 @@ public class Alarme extends Thread
 		return momento.get(GregorianCalendar.MINUTE);
 	}
 
-	private void disparaMinutoMudou(int novoMinuto) 
-	{	for (Relogio relogio: relogios) 
-		{	relogio.minutoMudou(novoMinuto);	
-		}
-	}
+        //Adiciona o grafico  a composiÃ§Ã£o.
+        public void add(Relogio relogio) {
+            filhosRelogios.add(relogio);
+        }
+        //Remove a forma geometrica da composiÃ§Ã£o.
+        public void remove(Relogio relogio) {
+            filhosRelogios.remove(relogio);
+        }
+        @Override
+        public void horaMudou(int novaHora) {
+            for (Relogio relogio: filhosRelogios) 
+                    {	relogio.horaMudou(novaHora);	
+                    }
+        }
 
-	private void disparaHoraMudou(int novaHora) 
-	{	for (Relogio relogio: relogios) 
-		{	relogio.horaMudou(novaHora);	
-		}
-	}
+        @Override
+        public void minutoMudou(int novoMinuto) {
+            for (Relogio relogio: filhosRelogios) 
+                    {	relogio.minutoMudou(novoMinuto);	
+                    }
+        }
 }
