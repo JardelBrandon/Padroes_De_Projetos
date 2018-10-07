@@ -1,0 +1,4 @@
+gui.ConnectionsWindow
+gui.ConnectionsWindow$1
+gui.ConnectionsWindow$event_ok
+gui.ConnectionsWindow$event_cancel

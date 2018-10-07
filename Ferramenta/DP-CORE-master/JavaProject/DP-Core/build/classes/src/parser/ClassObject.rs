@@ -1,0 +1,2 @@
+parser.ClassObject
+parser.ClassObject$Abstraction

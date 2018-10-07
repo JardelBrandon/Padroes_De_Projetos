@@ -1,0 +1,6 @@
+bridge
+A Abstract a
+B Abstract b
+End_Members
+A uses A
+End_Connections

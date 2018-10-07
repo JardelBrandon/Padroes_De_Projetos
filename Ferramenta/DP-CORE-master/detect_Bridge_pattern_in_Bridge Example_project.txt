@@ -1,0 +1,13 @@
+Amount of Candidates found: 2
+
+Candidate of Pattern Bridge:
+A(Refined Abstraction): LogitechRemoteControl
+B(Abstraction): AbstractRemoteControl
+C(Concrete Implementor): SamsungTV
+D(Implementor): ITV
+
+Candidate of Pattern Bridge:
+A(Refined Abstraction): LogitechRemoteControl
+B(Abstraction): AbstractRemoteControl
+C(Concrete Implementor): SonyTV
+D(Implementor): ITV
