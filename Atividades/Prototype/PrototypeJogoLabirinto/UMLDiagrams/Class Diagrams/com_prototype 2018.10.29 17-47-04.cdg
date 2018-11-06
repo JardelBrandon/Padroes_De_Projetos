@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="com_prototype">
+  <ClassDiagramComponents>
+    <Class name="Fantasma" package="com_prototype" visibility="public" xPosition="205.0" yPosition="435.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="ataque" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Inimigo" package="com_prototype" visibility="public" isAbstract="true" xPosition="397.0" yPosition="31.0">
+      <Fields>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="tipo" type="String" visibility="protected"/>
+        <Field name="forca" type="int" visibility="private"/>
+        <Field name="energia" type="int" visibility="private"/>
+        <Field name="nivel" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="ataque" returnType="void" visibility="package" isAbstract="true"/>
+        <Method name="getForca" returnType="int" visibility="public"/>
+        <Method name="setForca" returnType="void" visibility="public">
+          <Argument type="int" name="forca"/>
+        </Method>
+        <Method name="getEnergia" returnType="int" visibility="public"/>
+        <Method name="setEnergia" returnType="void" visibility="public">
+          <Argument type="int" name="energia"/>
+        </Method>
+        <Method name="getNivel" returnType="int" visibility="public"/>
+        <Method name="setNivel" returnType="void" visibility="public">
+          <Argument type="int" name="nivel"/>
+        </Method>
+        <Method name="getTipo" returnType="String" visibility="public"/>
+        <Method name="getId" returnType="String" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="String" name="id"/>
+        </Method>
+        <Method name="clone" returnType="Object" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JogoLabirinto" package="com_prototype" visibility="public" xPosition="22.0" yPosition="31.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Vampiro" package="com_prototype" visibility="public" xPosition="22.0" yPosition="435.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="ataque" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Repo_inimigos" package="com_prototype" visibility="public" xPosition="22.0" yPosition="163.0">
+      <Fields>
+        <Field name="inimigosRepo" type="Hashtable&lt;String, Inimigo&gt;" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getInimigo" returnType="Inimigo" visibility="public" isStatic="true">
+          <Argument type="String" name="inimigoId"/>
+        </Method>
+        <Method name="loadRepo" returnType="void" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="com_prototype.Repo_inimigos" target="com_prototype.Inimigo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com_prototype.Fantasma" target="com_prototype.Inimigo"/>
+    <HasRelation name="inimigosRepo" source="com_prototype.Repo_inimigos" target="com_prototype.Inimigo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="main" source="com_prototype.JogoLabirinto" target="com_prototype.Repo_inimigos" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com_prototype.Vampiro" target="com_prototype.Inimigo"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

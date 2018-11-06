@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="PrototypeAnimal">
+  <ClassDiagramComponents>
+    <Class name="Gato" package="prototype" visibility="public" xPosition="28.0" yPosition="344.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nomeDoAnimal"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Animal" package="prototype" visibility="public" isAbstract="true" xPosition="384.0" yPosition="244.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getNome" returnType="String" visibility="public"/>
+        <Method name="setNome" returnType="void" visibility="public">
+          <Argument type="String" name="nome"/>
+        </Method>
+        <Method name="comer" returnType="void" visibility="public"/>
+        <Method name="andar" returnType="void" visibility="public"/>
+        <Method name="clone" returnType="Object" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="PrototypeFactory" package="prototype" visibility="public" xPosition="337.0" yPosition="37.0">
+      <Fields>
+        <Field name="prototypeAnimal" type="Animal" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Animal" name="prototypeAnimal"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="criarClone" returnType="Animal" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Main" package="prototype" visibility="public" xPosition="28.0" yPosition="37.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Ovelha" package="prototype" visibility="public" xPosition="28.0" yPosition="213.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nomeDoAnimal"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="main" source="prototype.Main" target="prototype.PrototypeFactory" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="prototypeAnimal" source="prototype.PrototypeFactory" target="prototype.Animal" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="prototype.Ovelha" target="prototype.Animal"/>
+    <IsRelation name="is" source="prototype.Gato" target="prototype.Animal"/>
+    <UseRelation source="prototype.PrototypeFactory" target="prototype.Animal" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
